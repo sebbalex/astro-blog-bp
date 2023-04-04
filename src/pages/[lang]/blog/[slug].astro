@@ -1,0 +1,27 @@
+---
+import { languages } from "../../../i18n/ui";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BlogPost from "./BlogPost";
+import all_data from "../../../data";
+
+export function getStaticPaths() {
+  let routes = [];
+  Object.keys(languages).map((lang) => {
+    const data = all_data[lang];
+    const route = data
+      .reduce((a: string[], e: { slug: string }) => {
+        return a.concat(e.slug);
+      }, [])
+      .map((slug: string) => ({ params: { lang, slug } }));
+
+      routes = routes.concat(route);
+    });
+    
+  return routes;
+}
+const { lang, slug } = Astro.params;
+---
+
+<BaseLayout title="BlogPost">
+  <BlogPost lang={lang} slug={slug} client:load />
+</BaseLayout>

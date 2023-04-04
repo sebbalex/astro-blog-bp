@@ -1,0 +1,42 @@
+---
+import { ChangeLocale } from "./change-locale";
+import LanguagePicker from "./LanguagePicker.astro";
+---
+
+<header class="navbar flex justify-between bg-base-100 z-10 shadow-md">
+  <div class="logo">
+    Home
+    <a href="/" title="home">
+      {/* LOGO HERE */}
+    </a>
+  </div>
+  <ul>
+    <li>
+      {/* <ChangeLocale /> */}
+      <LanguagePicker />
+    </li>
+    <li>
+      {/* Light and dark theme selection toogle **/}
+      <label class="cursor-pointer label">
+        <span class="label-text pr-1">🌑</span>
+        <input
+          type="checkbox"
+          class="toggle"
+          data-toggle-theme="dark,light"
+          data-act-className="ACTIVECLASS"
+        />
+        <span class="label-text pl-1">☀️</span>
+      </label>
+    </li>
+  </ul>
+</header>
+<script>
+  const input: HTMLInputElement = document.querySelector("input.toggle");
+  input.addEventListener("click", () => {
+    localStorage.theme = input.checked ? "light" : "dark";
+    window.location.reload();
+  });
+  if(localStorage.theme === 'light') {
+    input.checked = true;
+  }
+</script>

@@ -1,0 +1,33 @@
+---
+import { languages } from "../../i18n/ui";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { pathname } = Astro.url;
+---
+
+<div id="change-locale">
+  <select class="select w-full max-w-xs">
+    <option disabled selected>
+      {t("app.changeLocale")}
+    </option>
+    {
+      Object.entries(languages).map(([lang, label]) => (
+        <option value={lang}>{label}</option>
+      ))
+    }
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById("change-locale");
+  select.addEventListener("change", function (e) {
+    const newLocale = `/${e.target.value}/`;
+    let location = document.location;
+    const lang = location.pathname.match(/^\/[a-zA-Z]{2}\//).at(0);
+    if(newLocale !== lang){
+      location.pathname = location.pathname.replace(lang, newLocale);
+    }
+  });
+</script>
