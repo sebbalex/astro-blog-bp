@@ -9,20 +9,7 @@ import { Mail } from "../../../components/icons/mail";
 import { Pinterest } from "../../../components/icons/pinterest";
 import { Sharing } from "../../../components/icons/sharing";
 import all_data from "../../../data";
-import { BlogProps, Post } from "../../../types/post";
-
-// export const getDataFromSlug = routeLoader$(
-//   ({ params: { slug }, error, locale }) => {
-//     const lang: Langs =
-//       locale() === "it" ? "it" : locale() === "en" ? "en" : "en";
-//     const year = slug.match(/\d{4}$/)
-//       ? [slug.match(/\d{4}$/)].toString()
-//       : 2023;
-//     const data = all_data[lang][year];
-//     if (!data) throw error(404, "no data found!");
-//     return data; //this must return serializable data!
-//   }
-// );
+import { BlogProps } from "../../../types/post";
 
 export default ({ lang, slug }: BlogProps) => {
   const data = all_data[lang];
@@ -129,16 +116,3 @@ export default ({ lang, slug }: BlogProps) => {
     </div>
   );
 };
-
-// export const head: DocumentHead = ({ resolveValue }) => {
-//   const data = resolveValue(getDataFromSlug);
-//   return {
-//     title: data.title,
-//     meta: [
-//       {
-//         name: "description",
-//         content: data.description,
-//       },
-//     ],
-//   };
-// };

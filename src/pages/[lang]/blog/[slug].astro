@@ -20,8 +20,9 @@ export function getStaticPaths() {
   return routes;
 }
 const { lang, slug } = Astro.params;
+const l = lang === "it" ? "it" : lang === "en" ? "en" : "en";
 ---
 
 <BaseLayout title="BlogPost">
-  <BlogPost lang={lang} slug={slug} client:load />
+  <BlogPost lang={l} slug={slug} client:load />
 </BaseLayout>

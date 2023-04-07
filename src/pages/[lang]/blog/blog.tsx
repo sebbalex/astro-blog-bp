@@ -9,16 +9,16 @@ import { BlogProps, Langs } from "../../../types/post";
 
 export const getPosts = (l: string) => {
   const links: JSX.Element[] = [];
-  const lang = l === "it" ? l : l === "en" ? "en" : "it";
+  const lang: Langs = l === "it" ? l : l === "en" ? "en" : "it";
 
-  for (const [i, v] of Object.entries(localizedData[lang])) {
-    links.push(<Card key={i} {...v} />);
+  for (const [i, {slug, ...v}] of Object.entries(localizedData[lang])) {
+    links.push(<Card slug={getAbsoluteURL(lang, slug)} key={i} {...v} />);
   }
   return links;
 };
 export const getPostsForHero = (l: string) => {
   const slides: HeroCarouselProps = {};
-  const lang = l === "it" ? l : l === "en" ? "en" : "it";
+  const lang: Langs = l === "it" ? l : l === "en" ? "en" : "it";
 
   return Object.keys(localizedData[lang]).map((v, i) => {
     const idx = "slide" + i;
@@ -27,12 +27,16 @@ export const getPostsForHero = (l: string) => {
       url: val.splash,
       title: val.title,
       description: val.description,
-      cta: val.slug,
+      cta: getAbsoluteURL(lang, val.slug),
     };
 
     return slides;
   });
 };
+
+function getAbsoluteURL(lang: Langs, slug: string): string {
+  return `/${lang}/blog/${slug}`;
+}
 
 export default ({ lang }: BlogProps) => {
   const locale = { lang };
@@ -50,7 +54,9 @@ export default ({ lang }: BlogProps) => {
       /> */}
       <div className="container">
         <div className="py-10 text-center">
-          <h2 className="min-w-full prose text-5xl pb-4">{t("blog.recent_text")}</h2>
+          <h2 className="min-w-full prose text-5xl pb-4">
+            {t("blog.recent_text")}
+          </h2>
           <h3 className="min-w-full prose prose-slate prose-md">
             {t("blog.recent_subtext")}
           </h3>
