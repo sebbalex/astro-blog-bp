@@ -36,6 +36,10 @@ export interface Data extends CardProps {
 
 export type Langs = "it" | "en";
 
+export type UILangs = {
+  [key in Langs]: {};
+};
+
 export type LabelLangs = {
   [key in Langs]: string;
 };
