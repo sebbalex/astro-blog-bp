@@ -25,9 +25,14 @@ const { pathname } = Astro.url;
   select.addEventListener("change", function (e) {
     const newLocale = `/${e.target.value}/`;
     let location = document.location;
-    const lang = location.pathname.match(/^\/[a-zA-Z]{2}\//).at(0);
-    if(newLocale !== lang){
-      location.pathname = location.pathname.replace(lang, newLocale);
+    const lang = location.pathname.match(/^\/[a-zA-Z]{2}\//)?.at(0) || null;
+    console.log(lang, newLocale);
+    if(lang) {
+      if(newLocale !== lang){
+        location.pathname = location.pathname.replace(lang, newLocale);
+      }
+    } else {
+      location.pathname = newLocale
     }
   });
 </script>
