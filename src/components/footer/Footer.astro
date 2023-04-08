@@ -1,6 +1,8 @@
 ---
-import styles from "./footer.css?inline";
+import { defaultLang } from "../../i18n/ui";
 import Newsletter from "./Newsletter.astro";
+const { lang } = Astro.params;
+const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
 ---
 
 <footer class="footer p-10 bg-neutral text-neutral-content">
@@ -27,9 +29,7 @@ import Newsletter from "./Newsletter.astro";
   <div>
     <span class="footer-title">Pages</span>
     <a href="/" class="link link-hover"> Home</a>
-    <a href="/hello" class="link link-hover"> Hello</a>
-    <a href="/hellomd" class="link link-hover"> Hello md</a>
-    <a href="/blog" class="link link-hover"> Blog</a>
+    <a href={`${l}/blog`} class="link link-hover"> Blog</a>
   </div>
   <div>
     <span class="footer-title">Legal</span>

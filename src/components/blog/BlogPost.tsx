@@ -1,15 +1,15 @@
 import React from "react";
-import Frontmatter from "../../../components/blog/frontmatter";
-import { Rating } from "../../../components/blog/rating";
-import { Back } from "../../../components/icons/back";
-import { Cart } from "../../../components/icons/cart";
-import { Facebook } from "../../../components/icons/facebook";
-import { Instagram } from "../../../components/icons/instagram";
-import { Mail } from "../../../components/icons/mail";
-import { Pinterest } from "../../../components/icons/pinterest";
-import { Sharing } from "../../../components/icons/sharing";
-import all_data from "../../../data";
-import { BlogProps } from "../../../types/post";
+import Frontmatter from "./frontmatter";
+import { Rating } from "./rating";
+import { Back } from "../icons/back";
+import { Cart } from "../icons/cart";
+import { Facebook } from "../icons/facebook";
+import { Instagram } from "../icons/instagram";
+import { Mail } from "../icons/mail";
+import { Pinterest } from "../icons/pinterest";
+import { Sharing } from "../icons/sharing";
+import all_data from "../../data";
+import { BlogProps } from "../../types/post";
 
 export default ({ lang, slug }: BlogProps) => {
   const data = all_data[lang];

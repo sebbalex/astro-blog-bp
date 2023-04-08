@@ -1,11 +1,11 @@
-import { localizedData, indexData } from "../../../data";
-import { Card } from "../../../components/blog/card";
+import { localizedData, indexData } from "../../data";
+import { Card } from "./card";
 import {
   HeroCarousel,
   HeroCarouselProps,
-} from "../../../components/blog/hero-carousel";
-import { useTranslations } from "../../../i18n/utils";
-import { BlogProps, Langs } from "../../../types/post";
+} from "./hero-carousel";
+import { useTranslations } from "../../i18n/utils";
+import { BlogProps, Langs } from "../../types/post";
 
 export const getPosts = (l: string) => {
   const links: JSX.Element[] = [];

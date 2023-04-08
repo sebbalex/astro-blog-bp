@@ -1,8 +1,8 @@
 ---
-import { languages } from "../../../i18n/ui";
+import { defaultLang, languages } from "../../../i18n/ui";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import BlogPost from "./BlogPost";
 import all_data from "../../../data";
+import BlogPost from "../../../components/blog/BlogPost";
 
 export function getStaticPaths() {
   let routes = [];
@@ -20,7 +20,7 @@ export function getStaticPaths() {
   return routes;
 }
 const { lang, slug } = Astro.params;
-const l = lang === "it" ? "it" : lang === "en" ? "en" : "en";
+const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
 ---
 
 <BaseLayout title="BlogPost">
