@@ -7,9 +7,10 @@ import { Instagram } from "../icons/instagram";
 import { Mail } from "../icons/mail";
 import { Pinterest } from "../icons/pinterest";
 import { Sharing } from "../icons/sharing";
-import Frontmatter from "./frontmatter";
-import { Rating } from "./rating";
+import Frontmatter from "./Frontmatter.astro";
+import Rating  from "./Rating.astro";
 import all_data from "../../data";
+import { Image } from "@astrojs/image/components";
 
 const { slug } = Astro.props;
 
@@ -43,7 +44,7 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
         <div class="card w-full bg-base-100 shadow-xl">
           <figure>
             <a href={post.slug}>
-              <img src={post.image} alt={post.title} />
+              <Image src={import(`/public/${post.image}`)} alt={post.title} />
             </a>
           </figure>
           <div class="card-body">

@@ -1,4 +1,5 @@
 ---
+import { Image } from "@astrojs/image/components";
 import { CardProps } from "../../types/post";
 import { Facebook } from "../icons/facebook";
 import { Instagram } from "../icons/instagram";
@@ -23,7 +24,7 @@ const {
 <div class="card w-96 bg-base-100 shadow-xl mb-5 md:mb-0">
   <a href={slug}>
     <figure>
-      <img src={splash} alt={alt} />
+      <Image src={import(`/public/${splash}`)} alt={alt} />
     </figure>
   </a>
   <div class="card-body">

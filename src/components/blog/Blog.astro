@@ -2,9 +2,8 @@
 import localizedData from "../../data";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { Langs } from "../../types/post";
-// import { Card } from "./card";
 import Card from "./Card.astro";
-import { HeroCarousel, HeroCarouselProps } from "./hero-carousel";
+import HeroCarousel, { Props as HeroCarouselProps } from "./HeroCarousel.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -30,7 +29,6 @@ export const getPostsForHero = (l: Langs) => {
   });
 };
 ---
-
 <>
   <HeroCarousel {...getPostsForHero(lang).at(0)} />
   {
@@ -54,7 +52,7 @@ export const getPostsForHero = (l: Langs) => {
     <div class="flex flex-col md:flex-row md:space-x-5 py-5 px-2 md:px-5">
       {
         Object.entries(localizedData[lang]).map((p) => {
-          const [i, { slug, ...v }] = p;
+          const [_, { slug, ...v }] = p;
           return <Card slug={getAbsoluteURL(lang, slug)} {...v} />;
         })
       }
