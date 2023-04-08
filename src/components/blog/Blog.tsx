@@ -6,10 +6,11 @@ import {
 } from "./hero-carousel";
 import { useTranslations } from "../../i18n/utils";
 import { BlogProps, Langs } from "../../types/post";
+import { defaultLang } from "../../i18n/ui";
 
 export const getPosts = (l: string) => {
   const links: JSX.Element[] = [];
-  const lang: Langs = l === "it" ? l : l === "en" ? "en" : "it";
+  const lang: Langs = l === "it" ? l : l === "en" ? "en" : defaultLang;
 
   for (const [i, {slug, ...v}] of Object.entries(localizedData[lang])) {
     links.push(<Card slug={getAbsoluteURL(lang, slug)} key={i} {...v} />);
@@ -18,7 +19,7 @@ export const getPosts = (l: string) => {
 };
 export const getPostsForHero = (l: string) => {
   const slides: HeroCarouselProps = {};
-  const lang: Langs = l === "it" ? l : l === "en" ? "en" : "it";
+  const lang: Langs = l === "it" ? l : l === "en" ? "en" : defaultLang;
 
   return Object.keys(localizedData[lang]).map((v, i) => {
     const idx = "slide" + i;

@@ -1,0 +1,63 @@
+---
+import localizedData from "../../data";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { Langs } from "../../types/post";
+// import { Card } from "./card";
+import Card from "./Card.astro";
+import { HeroCarousel, HeroCarouselProps } from "./hero-carousel";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export function getAbsoluteURL(lang: Langs, slug: string): string {
+  return `/${lang}/blog/${slug}`;
+}
+
+export const getPostsForHero = (l: Langs) => {
+  const slides: HeroCarouselProps = {};
+
+  return Object.keys(localizedData[l]).map((v, i) => {
+    const idx = "slide" + i;
+    const val = localizedData[l][v];
+    slides[idx] = {
+      url: val.splash,
+      title: val.title,
+      description: val.description,
+      cta: getAbsoluteURL(l, val.slug),
+    };
+
+    return slides;
+  });
+};
+---
+
+<>
+  <HeroCarousel {...getPostsForHero(lang).at(0)} />
+  {
+    /* <HeroImage
+        title={t("blog.title")}
+        description={t("blog.desc")}
+        url="/assets/images/blog-hero.webp"
+        alt="Photo by Enric Cruz López: https://www.pexels.com/photo/bikes-parked-on-city-embankment-near-canal-and-old-buildings-on-cloudy-day-6039194/"
+        ctaText="vai"
+      /> */
+  }
+  <div class="container">
+    <div class="py-10 text-center">
+      <h2 class="min-w-full prose text-5xl pb-4">
+        {t("blog.recent_text")}
+      </h2>
+      <h3 class="min-w-full prose prose-slate prose-md">
+        {t("blog.recent_subtext")}
+      </h3>
+    </div>
+    <div class="flex flex-col md:flex-row md:space-x-5 py-5 px-2 md:px-5">
+      {
+        Object.entries(localizedData[lang]).map((p) => {
+          const [i, { slug, ...v }] = p;
+          return <Card slug={getAbsoluteURL(lang, slug)} {...v} />;
+        })
+      }
+    </div>
+  </div>
+</>

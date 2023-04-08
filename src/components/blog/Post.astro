@@ -1,0 +1,115 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { Back } from "../icons/back";
+import { Cart } from "../icons/cart";
+import { Facebook } from "../icons/facebook";
+import { Instagram } from "../icons/instagram";
+import { Mail } from "../icons/mail";
+import { Pinterest } from "../icons/pinterest";
+import { Sharing } from "../icons/sharing";
+import Frontmatter from "./frontmatter";
+import { Rating } from "./rating";
+import all_data from "../../data";
+
+const { slug } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const data = all_data[lang];
+const { posts, frontmatter } = data.find((v) => v.slug === slug);
+---
+
+<div class="p-3 lg:p-8 gap-8 w-full max-w-full my-0 mx-auto flex flex-col">
+  <a href={`/${lang}/blog/`}>
+    <div class="flex flex-row align-middle">
+      <Back />
+      <div class="flex pl-3" style={{ height: "36px", alignItems: "center" }}>
+        {"Blog"}
+      </div>
+    </div>
+  </a>
+  <Frontmatter {...frontmatter} />
+  <div id="social" class="flex space-x-1">
+    <Facebook />
+    <Instagram />
+    <Pinterest />
+    <Mail />
+    <Sharing />
+  </div>
+  {
+    posts.map((post, i) => (
+      <div>
+        <div class="card w-full bg-base-100 shadow-xl">
+          <figure>
+            <a href={post.slug}>
+              <img src={post.image} alt={post.title} />
+            </a>
+          </figure>
+          <div class="card-body">
+            <a href={post.slug}>
+              <h2 class="card-title pb-7">
+                {post.title}
+                {post.isNew && (
+                  <div class="badge badge-secondary uppercase">new</div>
+                )}
+              </h2>
+              <p>{post.description}</p>
+              <hr class="pt-5" />
+              <h2 class="card-title">Specification</h2>
+              <p>{post.specification}</p>
+              <hr class="pt-7" />
+              <h2 class="card-title justify-center">{post.title}</h2>
+              <h3 class="flex font-medium justify-center">{post.motto}</h3>
+              <hr class="pt-7" />
+              <h2 class="card-title">Reasons</h2>
+              <h3 class="pt-2 font-medium">To buy</h3>
+              <ul>
+                {post.pros.map((pro, i) => (
+                  <li>✅ {pro}</li>
+                ))}
+              </ul>
+              <h3 class="pt-2 font-medium">To avoid</h3>
+              <ul>
+                {post.cons.map((con, i) => (
+                  <li>⭕️ {con}</li>
+                ))}
+              </ul>
+              <hr class="pt-5" />
+              <h2 class="card-title">Review</h2>
+              <Rating count={post.stars} />
+              <p>{post.review}</p>
+            </a>
+            <div class="flex items-center pt-5">
+              <img
+                class="w-10 h-10 rounded-full mr-4"
+                src={post.avatar}
+                alt={`avatar of ${post.title}`}
+              />
+              <div class="text-sm">
+                <p class="leading-none">{post.author}</p>
+                <p class="">{post.created_at}</p>
+              </div>
+            </div>
+            <div class="card-actions justify-end">
+              {post.tags.map((t, i) => (
+                <div class="badge badge-outline">{t}</div>
+              ))}
+            </div>
+            <div class="card-actions justify-end">
+              {post.cta && (
+                <>
+                  <img class="w-15 h-7 mt-4" src="/assets/images/amazon.png" />
+                  <a href={post.cta} class="btn btn-primary">
+                    <Cart />
+                    Buy
+                  </a>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
