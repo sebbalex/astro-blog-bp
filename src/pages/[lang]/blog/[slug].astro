@@ -23,6 +23,6 @@ const { lang, slug } = Astro.params;
 const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
 ---
 
-<BaseLayout title="BlogPost">
-  <Post lang={l} slug={slug} />
+<BaseLayout title="BlogPost" desc="desc blog">
+  <Post slug={slug} />
 </BaseLayout>

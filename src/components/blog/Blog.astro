@@ -5,6 +5,8 @@ import { Langs } from "../../types/post";
 import Card from "./Card.astro";
 import HeroCarousel, { Props as HeroCarouselProps } from "./HeroCarousel.astro";
 
+type Props = {};
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 

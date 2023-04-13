@@ -8,6 +8,7 @@ import { Pinterest } from "../icons/pinterest";
 import { Sharing } from "../icons/sharing";
 import { dynamicViteAssetImport } from "../../utils/images";
 
+type Props = CardProps;
 const {
   title,
   splash,
@@ -22,7 +23,7 @@ const {
 } = Astro.props;
 ---
 
-<div class="card w-auto bg-base-100 shadow-xl mb-5 md:mb-0">
+<div class="card w-auto bg-base-200 shadow-xl mb-5 md:mb-0">
   <a href={slug}>
     <figure>
       <Image src={dynamicViteAssetImport(splash)} alt={alt} />

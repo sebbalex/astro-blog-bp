@@ -1,6 +1,8 @@
 export const Pinterest = () => (
   <svg
-    fill="#000000"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    className="fill-current"
     height="25px"
     width="25px"
     version="1.1"

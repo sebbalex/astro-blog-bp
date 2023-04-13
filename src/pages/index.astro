@@ -6,11 +6,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 export function getStaticPaths() {
   return {params: {lang: defaultLang}}
 }
-
-const { lang } = Astro.params;
-const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
 ---
 
-<BaseLayout title="Blog">
-  <Blog lang={defaultLang} />
+<BaseLayout title="Blog" desc="desc blog">
+  <Blog />
 </BaseLayout>

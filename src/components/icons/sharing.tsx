@@ -1,6 +1,8 @@
 export const Sharing = () => (
   <svg
-    fill="#000000"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    className="fill-current"
     version="1.1"
     id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"

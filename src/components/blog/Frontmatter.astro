@@ -1,14 +1,20 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import { Frontmatter } from "../../types/post";
 type Props = Frontmatter;
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const { title, username, published_at, subtitle } = Astro.props;
 ---
 
 <>
   <h1 class="text-3xl">{title}</h1>
   <h2 class="text-sm">
-    By <a href="#">{username}</a> published {published_at}
+    {t("post.fromuser")}
+    <a href="#">{username}</a>
+    {t("post.published")}
+    {published_at}
   </h2>
   <h3 class="text-lg font-light">{subtitle}</h3>
 </>

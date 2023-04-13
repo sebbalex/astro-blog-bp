@@ -1,14 +1,12 @@
 ---
 import Blog from "../../../components/blog/Blog.astro";
-import { defaultLang, languages } from "../../../i18n/ui";
+import { languages } from "../../../i18n/ui";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 export function getStaticPaths() {
   return Object.keys(languages).map((l) => ({ params: { lang: l } }));
 }
-const { lang } = Astro.params;
-const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
 ---
 
-<BaseLayout title="Blog">
-  <Blog lang={l} />
+<BaseLayout title="Blog" desc="desc blog">
+  <Blog />
 </BaseLayout>

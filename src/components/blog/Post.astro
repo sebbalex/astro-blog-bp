@@ -8,11 +8,14 @@ import { Mail } from "../icons/mail";
 import { Pinterest } from "../icons/pinterest";
 import { Sharing } from "../icons/sharing";
 import Frontmatter from "./Frontmatter.astro";
-import Rating  from "./Rating.astro";
+import Rating from "./Rating.astro";
 import all_data from "../../data";
 import { Image } from "@astrojs/image/components";
 import { dynamicViteAssetImport } from "../../utils/images";
 
+type Props = {
+  slug: string;
+}
 const { slug } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
@@ -42,10 +45,13 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
   {
     posts.map((post, i) => (
       <div>
-        <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card w-full bg-base-200 shadow-xl">
           <figure>
             <a href={post.slug}>
-              <Image src={dynamicViteAssetImport(post.image)} alt={post.title} />
+              <Image
+                src={dynamicViteAssetImport(post.image)}
+                alt={post.title}
+              />
             </a>
           </figure>
           <div class="card-body">
@@ -58,27 +64,27 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
               </h2>
               <p>{post.description}</p>
               <hr class="pt-5" />
-              <h2 class="card-title">Specification</h2>
+              <h2 class="card-title">{t("post.specification")}</h2>
               <p>{post.specification}</p>
-              <hr class="pt-7" />
+              <hr class="pt-5" />
               <h2 class="card-title justify-center">{post.title}</h2>
-              <h3 class="flex font-medium justify-center">{post.motto}</h3>
-              <hr class="pt-7" />
-              <h2 class="card-title">Reasons</h2>
-              <h3 class="pt-2 font-medium">To buy</h3>
+              <h3 class="flex font-medium justify-center pb-5">{post.motto}</h3>
+              <hr class="pt-5" />
+              <h2 class="card-title">{t("post.reasons")}</h2>
+              <h3 class="pt-2 font-medium">{t("post.reasons.tobuy")}</h3>
               <ul>
                 {post.pros.map((pro, i) => (
                   <li>✅ {pro}</li>
                 ))}
               </ul>
-              <h3 class="pt-2 font-medium">To avoid</h3>
-              <ul>
+              <h3 class="pt-2 font-medium">{t("post.reasons.toavoid")}</h3>
+              <ul class="pb-5">
                 {post.cons.map((con, i) => (
                   <li>⭕️ {con}</li>
                 ))}
               </ul>
               <hr class="pt-5" />
-              <h2 class="card-title">Review</h2>
+              <h2 class="card-title">{t("post.review")}</h2>
               <Rating count={post.stars} />
               <p>{post.review}</p>
             </a>
@@ -104,7 +110,7 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
                   <img class="w-15 h-7 mt-4" src="/assets/images/amazon.png" />
                   <a href={post.cta} class="btn btn-primary">
                     <Cart />
-                    Buy
+                    {t("post.button")}
                   </a>
                 </>
               )}
