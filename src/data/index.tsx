@@ -16,7 +16,7 @@ export const dataEN: Data[] = [
     author: "Mario Rossi",
     description:
       "Best bikepacking bags 2022 - top tube, seatpost and much more to enjoy your trip with your bike",
-    splash: "bikepacking-2022-splash.jpg",
+    splash: "bikepacking-2022-splash.webp",
     alt: "Best bikepacking bags 2022",
     splash_credits:
       "Photo by Maarten van den Heuvel: https://www.pexels.com/photo/bikes-in-parking-space-on-street-4254893/",
@@ -31,7 +31,7 @@ export const dataEN: Data[] = [
     author: "Mario Rossi",
     description:
       "Best bikepacking bags 2023 - top tube, seatpost and much more to enjoy your trip with your bike",
-    splash: "bikepacking-2023-splash.jpg",
+    splash: "bikepacking-2023-splash.webp",
     alt: "Best bikepacking bags 2023 image",
     splash_credits:
       "Photo by Joan Monterde: https://www.pexels.com/photo/a-yellow-dome-tent-under-a-starry-night-7331516/",
@@ -48,7 +48,7 @@ export const dataIT: Data[] = [
     author: "Mario Rossi",
     description:
       "Best bikepacking bags 2022 - top tube, seatpost and much more to enjoy your trip with your bike",
-    splash: "bikepacking-2022-splash.jpg",
+    splash: "bikepacking-2022-splash.webp",
     alt: "Best bikepacking bags 2022",
     splash_credits:
       "Photo by Maarten van den Heuvel: https://www.pexels.com/photo/bikes-in-parking-space-on-street-4254893/",
@@ -63,7 +63,7 @@ export const dataIT: Data[] = [
     author: "Mario Rossi",
     description:
       "Best bikepacking bags 2023 - top tube, seatpost and much more to enjoy your trip with your bike",
-    splash: "bikepacking-2023-splash.jpg",
+    splash: "bikepacking-2023-splash.webp",
     alt: "Best bikepacking bags 2023 image",
     splash_credits:
       "Photo by Joan Monterde: https://www.pexels.com/photo/a-yellow-dome-tent-under-a-starry-night-7331516/",
