@@ -24,7 +24,7 @@ export const ui: UILangs = {
     "footer.company.desc": "Providing reliable tech since 1992",
     "footer.nav.pages": "Pages",
     "footer.nav.legal": "Legal",
-    "footer.newsletter.label": "Enter your email addres",
+    "footer.newsletter.label": "Don't miss updates, enter your email addres here",
     "footer.newsletter.button": "Subscribe",
   },
   it: {

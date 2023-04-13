@@ -1,7 +1,7 @@
 export const Instagram = () => (
   <svg
-    fill-rule="evenodd"
-    clip-rule="evenodd"
+    fillRule="evenodd"
+    clipRule="evenodd"
     className="fill-current"
     height="25px"
     width="25px"

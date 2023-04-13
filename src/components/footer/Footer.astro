@@ -1,6 +1,7 @@
 ---
 import Newsletter from "./Newsletter.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import localizedData from "../../data";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -30,7 +31,17 @@ const t = useTranslations(lang);
   <div>
     <span class="footer-title">{t("footer.nav.pages")}</span>
     <a href="/" class="link link-hover"> Home</a>
-    <a href={`${lang}/blog`} class="link link-hover"> Blog</a>
+    <a href={`/${lang}/blog`} class="link link-hover"> Blog</a>
+    {
+      Object.entries(localizedData[lang]).map((p) => {
+        const [_, { slug, ...v }] = p;
+        return (
+          <a href={`/${lang}/blog/${slug}`} class="link link-hover">
+            {v.title}
+          </a>
+        );
+      })
+    }
   </div>
   <div>
     <span class="footer-title">{t("footer.nav.legal")}</span>
