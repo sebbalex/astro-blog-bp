@@ -6,6 +6,7 @@ import { Instagram } from "../icons/instagram";
 import { Mail } from "../icons/mail";
 import { Pinterest } from "../icons/pinterest";
 import { Sharing } from "../icons/sharing";
+import { dynamicViteAssetImport } from "../../utils/images";
 
 const {
   title,
@@ -24,7 +25,7 @@ const {
 <div class="card w-96 bg-base-100 shadow-xl mb-5 md:mb-0">
   <a href={slug}>
     <figure>
-      <Image src={import(`/public/${splash}`)} alt={alt} />
+      <Image src={dynamicViteAssetImport(splash)} alt={alt} />
     </figure>
   </a>
   <div class="card-body">

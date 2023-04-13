@@ -11,6 +11,7 @@ import Frontmatter from "./Frontmatter.astro";
 import Rating  from "./Rating.astro";
 import all_data from "../../data";
 import { Image } from "@astrojs/image/components";
+import { dynamicViteAssetImport } from "../../utils/images";
 
 const { slug } = Astro.props;
 
@@ -44,7 +45,7 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
         <div class="card w-full bg-base-100 shadow-xl">
           <figure>
             <a href={post.slug}>
-              <Image src={import(`/public/${post.image}`)} alt={post.title} />
+              <Image src={dynamicViteAssetImport(post.image)} alt={post.title} />
             </a>
           </figure>
           <div class="card-body">
