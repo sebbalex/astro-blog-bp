@@ -1,8 +1,9 @@
 ---
-import { defaultLang } from "../../i18n/ui";
 import Newsletter from "./Newsletter.astro";
-const { lang } = Astro.params;
-const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="footer p-10 bg-neutral text-neutral-content">
@@ -21,18 +22,18 @@ const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
       ></path>
     </svg>
     <p>
-      ACME Industries Ltd.
+      {t("footer.company.name")}
       <br />
-      Providing reliable tech since 1992
+      {t("footer.company.desc")}
     </p>
   </div>
   <div>
-    <span class="footer-title">Pages</span>
+    <span class="footer-title">{t("footer.nav.pages")}</span>
     <a href="/" class="link link-hover"> Home</a>
-    <a href={`${l}/blog`} class="link link-hover"> Blog</a>
+    <a href={`${lang}/blog`} class="link link-hover"> Blog</a>
   </div>
   <div>
-    <span class="footer-title">Legal</span>
+    <span class="footer-title">{t("footer.nav.legal")}</span>
     <a class="link link-hover">Privacy policy</a>
     <a class="link link-hover">Cookie policy</a>
   </div>
