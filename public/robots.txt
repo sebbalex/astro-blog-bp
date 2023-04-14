@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bikeblog2.sebastiani.io/sitemap-index.xml

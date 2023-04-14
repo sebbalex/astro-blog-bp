@@ -1,8 +1,3 @@
-export interface IndexData {
-  title: string;
-  description: string;
-}
-
 export interface Frontmatter {
   title: string;
   username: string;
@@ -22,12 +17,12 @@ export interface CardProps {
   tags?: string[];
   splash_credits: string;
 }
-export interface Dataa {
-  [key: string]: {
-    frontmatter: Frontmatter;
-    posts: Post[];
-  } & CardProps;
-}
+// export interface Dataa {
+//   [key: string]: {
+//     frontmatter: Frontmatter;
+//     posts: Post[];
+//   } & CardProps;
+// }
 
 export interface Data extends CardProps {
   frontmatter: Frontmatter;

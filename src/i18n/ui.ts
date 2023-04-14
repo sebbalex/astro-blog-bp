@@ -9,6 +9,8 @@ export const defaultLang: Langs = "it";
 
 export const ui: UILangs = {
   en: {
+    "site.title": "Best products for bikepacking",
+    "site.desc": "Whether you're embarking on a multi-day adventure close to home or crossing continents, these are the ultimate bikepacking bags to ensure you're fully equipped.",
     "app.changeLocale": "Change language",
     "blog.recent_text": "Recent articles",
     "blog.recent_subtext": "Most recent posts for bikepacking",
@@ -28,6 +30,8 @@ export const ui: UILangs = {
     "footer.newsletter.button": "Subscribe",
   },
   it: {
+    "site.title": "I migliori prodotti per il bikepacking",
+    "site.desc": "Whether you're embarking on a multi-day adventure close to home or crossing continents, these are the ultimate bikepacking bags to ensure you're fully equipped.",
     "app.changeLocale": "Change language",
     "blog.recent_text": "Articoli recenti",
     "blog.recent_subtext": "Articoli più recenti per il bikepacking",

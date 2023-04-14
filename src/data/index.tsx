@@ -75,12 +75,4 @@ export const localizedData: LocalizedData = {
   it: dataIT,
 };
 
-// TO BE REMOVED
-// this is used for meta data in pages for SEO optimizations
-// see blog/index
-export const indexData: IndexData = {
-  title: "Blog for bikepacking",
-  description: "Best bikepacking bags ever",
-};
-
 export default localizedData;

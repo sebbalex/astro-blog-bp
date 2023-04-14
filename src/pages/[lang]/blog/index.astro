@@ -1,12 +1,15 @@
 ---
 import Blog from "../../../components/blog/Blog.astro";
 import { languages } from "../../../i18n/ui";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 export function getStaticPaths() {
   return Object.keys(languages).map((l) => ({ params: { lang: l } }));
 }
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<BaseLayout title="Blog" desc="desc blog">
+<BaseLayout title={t("site.title")} desc={t("site.desc")}>
   <Blog />
 </BaseLayout>

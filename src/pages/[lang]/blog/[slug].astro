@@ -1,28 +1,36 @@
 ---
-import { defaultLang, languages } from "../../../i18n/ui";
+import { languages } from "../../../i18n/ui";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import all_data from "../../../data";
 import Post from "../../../components/blog/Post.astro";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
 
 export function getStaticPaths() {
   let routes = [];
   Object.keys(languages).map((lang) => {
     const data = all_data[lang];
+    
     const route = data
       .reduce((a: string[], e: { slug: string }) => {
         return a.concat(e.slug);
       }, [])
-      .map((slug: string) => ({ params: { lang, slug } }));
+      .map((slug: string) => ({
+        params: { lang, slug },
+      }));
 
-      routes = routes.concat(route);
-    });
-    
+    routes = routes.concat(route);
+  });
+  
   return routes;
 }
-const { lang, slug } = Astro.params;
-const l = lang === "it" ? "it" : lang === "en" ? "en" : defaultLang;
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const data = all_data[lang];
+const {title} = data.find((p) => p.slug === slug);
+const seoTitle = `${t("site.title")} - ${title}`;
 ---
 
-<BaseLayout title="BlogPost" desc="desc blog">
+<BaseLayout title={seoTitle} desc={t("site.desc")}>
   <Post slug={slug} />
 </BaseLayout>
