@@ -31,7 +31,7 @@ export const ui: UILangs = {
   },
   it: {
     "site.title": "I migliori prodotti per il bikepacking",
-    "site.desc": "Whether you're embarking on a multi-day adventure close to home or crossing continents, these are the ultimate bikepacking bags to ensure you're fully equipped.",
+    "site.desc": "Che si tratti di un'avventura di più giorni vicino a casa o di attraversare i continenti, queste sono le borse da bikepacking più adatte a garantirvi un equipaggiamento completo.",
     "app.changeLocale": "Change language",
     "blog.recent_text": "Articoli recenti",
     "blog.recent_subtext": "Articoli più recenti per il bikepacking",
