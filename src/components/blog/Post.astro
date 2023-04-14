@@ -108,7 +108,7 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
               {post.cta && (
                 <>
                   <img class="w-15 h-7 mt-4" src="/assets/images/amazon.png" />
-                  <a href={post.cta} class="btn btn-primary">
+                  <a href={post.cta} class="btn btn-primary gap-2">
                     <Cart />
                     {t("post.button")}
                   </a>

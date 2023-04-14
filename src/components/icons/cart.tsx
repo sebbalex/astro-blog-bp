@@ -3,7 +3,7 @@ export const Cart = () => (
     viewBox="0 0 1024 1024"
     fillRule="evenodd"
     clipRule="evenodd"
-    className="fill-current icon"
+    className="fill-current icon h-6 w-6"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
   >
