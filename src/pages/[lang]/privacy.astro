@@ -1,0 +1,18 @@
+---
+import { languages } from "../../i18n/ui";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+export function getStaticPaths() {
+  return Object.keys(languages).map((l) => ({ params: { lang: l } }));
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t("site.title")} desc={t("site.desc")}>
+  <div class="container">
+    <div class="py-10 text-center">
+      <h2 class="min-w-full prose text-5xl pb-4">Privacy</h2>
+    </div>
+  </div>
+</BaseLayout>

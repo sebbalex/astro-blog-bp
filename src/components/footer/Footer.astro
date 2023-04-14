@@ -45,8 +45,8 @@ const t = useTranslations(lang);
   </div>
   <div>
     <span class="footer-title">{t("footer.nav.legal")}</span>
-    <a class="link link-hover">Privacy policy</a>
-    <a class="link link-hover">Cookie policy</a>
+    <a href={`/${lang}/privacy`} class="link link-hover">Privacy policy</a>
+    <a href={`/${lang}/cookie`} class="link link-hover">Cookie policy</a>
   </div>
   <Newsletter />
 </footer>
