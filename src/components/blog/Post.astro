@@ -15,7 +15,7 @@ import { dynamicViteAssetImport } from "../../utils/images";
 
 type Props = {
   slug: string;
-}
+};
 const { slug } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
@@ -47,47 +47,40 @@ const { posts, frontmatter } = data.find((v) => v.slug === slug);
       <div>
         <div class="card w-full bg-base-200 shadow-xl">
           <figure>
-            <a href={post.slug}>
-              <Image
-                src={dynamicViteAssetImport(post.image)}
-                alt={post.title}
-              />
-            </a>
+            <Image src={dynamicViteAssetImport(post.image)} alt={post.title} />
           </figure>
           <div class="card-body">
-            <a href={post.slug}>
-              <h2 class="card-title pb-7">
-                {post.title}
-                {post.isNew && (
-                  <div class="badge badge-secondary uppercase">new</div>
-                )}
-              </h2>
-              <p>{post.description}</p>
-              <hr class="pt-5" />
-              <h2 class="card-title">{t("post.specification")}</h2>
-              <p>{post.specification}</p>
-              <hr class="pt-5" />
-              <h2 class="card-title justify-center">{post.title}</h2>
-              <h3 class="flex font-medium justify-center pb-5">{post.motto}</h3>
-              <hr class="pt-5" />
-              <h2 class="card-title">{t("post.reasons")}</h2>
-              <h3 class="pt-2 font-medium">{t("post.reasons.tobuy")}</h3>
-              <ul>
-                {post.pros.map((pro, i) => (
-                  <li>✅ {pro}</li>
-                ))}
-              </ul>
-              <h3 class="pt-2 font-medium">{t("post.reasons.toavoid")}</h3>
-              <ul class="pb-5">
-                {post.cons.map((con, i) => (
-                  <li>⭕️ {con}</li>
-                ))}
-              </ul>
-              <hr class="pt-5" />
-              <h2 class="card-title">{t("post.review")}</h2>
-              <Rating count={post.stars} />
-              <p>{post.review}</p>
-            </a>
+            <h2 class="card-title pb-7">
+              {post.title}
+              {post.isNew && (
+                <div class="badge badge-secondary uppercase">new</div>
+              )}
+            </h2>
+            <p>{post.description}</p>
+            <hr class="pt-5" />
+            <h2 class="card-title">{t("post.specification")}</h2>
+            <p>{post.specification}</p>
+            <hr class="pt-5" />
+            <h2 class="card-title justify-center">{post.title}</h2>
+            <h3 class="flex font-medium justify-center pb-5">{post.motto}</h3>
+            <hr class="pt-5" />
+            <h2 class="card-title">{t("post.reasons")}</h2>
+            <h3 class="pt-2 font-medium">{t("post.reasons.tobuy")}</h3>
+            <ul>
+              {post.pros.map((pro, i) => (
+                <li>✅ {pro}</li>
+              ))}
+            </ul>
+            <h3 class="pt-2 font-medium">{t("post.reasons.toavoid")}</h3>
+            <ul class="pb-5">
+              {post.cons.map((con, i) => (
+                <li>⭕️ {con}</li>
+              ))}
+            </ul>
+            <hr class="pt-5" />
+            <h2 class="card-title">{t("post.review")}</h2>
+            <Rating count={post.stars} />
+            <p>{post.review}</p>
             <div class="flex items-center pt-5">
               <img
                 class="w-10 h-10 rounded-full mr-4"
