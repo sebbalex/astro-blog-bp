@@ -19,7 +19,7 @@ const items  = Astro.props;
       const { title, url, cta, description } = items[v];
       return (
         <div id={v} class="carousel-item relative w-full">
-          <Image src={dynamicViteAssetImport(url)} class="object-cover h-96 w-full" alt={title} format={"jpg"}/>
+          <Image src={dynamicViteAssetImport(url)} class="object-cover h-[32rem] w-full brightness-[60%]" alt={title} format={"jpg"}/>
           <div class="absolute flex justify-center transform -translate-y-1/2 left-5 right-5 top-1/2">
             <div class="hero-content text-center text-neutral-content">
               <a href={cta}>
