@@ -42,7 +42,7 @@ export const getPostsForHero = (l: Langs) => {
         ctaText="vai"
       /> */
   }
-  <div class="container">
+  <div class="">
     <div class="py-10 text-center">
       <h2 class="min-w-full prose text-5xl pb-4">
         {t("blog.recent_text")}
@@ -51,7 +51,7 @@ export const getPostsForHero = (l: Langs) => {
         {t("blog.recent_subtext")}
       </h3>
     </div>
-    <div class="flex flex-col md:flex-row md:space-x-5 py-5 px-2 md:px-5">
+    <div class="flex flex-col flex-wrap md:flex-row py-5 px-5 justify-center">
       {
         Object.entries(localizedData[lang]).map((p) => {
           const [_, { slug, ...v }] = p;
