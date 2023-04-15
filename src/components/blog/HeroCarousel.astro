@@ -6,10 +6,10 @@ import { dynamicViteAssetImport } from "../../utils/images";
 export interface Props {
   [key: string]: HeroProps;
 }
-const items  = Astro.props;
+const items = Astro.props;
 ---
 
-<div class="carousel w-full">
+<div id="carousel" class="carousel w-full">
   {
     Object.keys(items).map((v, i) => {
       const prev = items["slide" + (i - 1)]
@@ -19,7 +19,12 @@ const items  = Astro.props;
       const { title, url, cta, description } = items[v];
       return (
         <div id={v} class="carousel-item relative w-full">
-          <Image src={dynamicViteAssetImport(url)} class="object-cover h-[32rem] w-full brightness-[60%]" alt={title} format={"jpg"}/>
+          <Image
+            src={dynamicViteAssetImport(url)}
+            class="object-cover h-[32rem] w-full brightness-[60%]"
+            alt={title}
+            format={"jpg"}
+          />
           <div class="absolute flex justify-center transform -translate-y-1/2 left-5 right-5 top-1/2">
             <div class="hero-content text-center text-neutral-content">
               <a href={cta}>
@@ -43,3 +48,16 @@ const items  = Astro.props;
     })
   }
 </div>
+<script>
+  const carousel = document.getElementById("carousel");
+  const carouselSlides = document.getElementsByClassName("carousel-item");
+  let counter = 0;
+  setInterval(() => {
+    const wScroll = (window.innerWidth *2* ++counter) / 2 + 100;
+    carousel.scrollTo(wScroll, 0);
+    if (counter === carouselSlides.length) {
+      counter = 0;
+      carousel.scrollTo(0, 0);
+    }
+  }, 10000);
+</script>

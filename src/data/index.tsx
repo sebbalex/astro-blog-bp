@@ -4,7 +4,7 @@ import en_posts_2023 from "./en/2023/posts.json";
 import it_posts_2022 from "./it/2022/posts.json";
 import it_posts_2023 from "./it/2023/posts.json";
 
-import type { Data, IndexData, LocalizedData } from "../types/post";
+import type { Data, LocalizedData } from "../types/post";
 
 export const dataEN: Data[] = [
   {
