@@ -10,6 +10,7 @@ type Props = {
 }
 const lang = getLangFromUrl(Astro.url);
 const { title, desc } = Astro.props;
+const defaultTheme = "light";
 ---
 
 <script>
@@ -59,7 +60,7 @@ const { title, desc } = Astro.props;
     <meta property="twitter:description" content={desc}>
     <meta property="twitter:image" content="https://bikeblog2.sebastiani.io/assets/images/bikepacking-2022-splash.webp">
   </head>
-  <body>
+  <body data-theme={defaultTheme}>
     <div class="flex flex-col min-h-screen">
       <main class="flex-1">
         <Header />
